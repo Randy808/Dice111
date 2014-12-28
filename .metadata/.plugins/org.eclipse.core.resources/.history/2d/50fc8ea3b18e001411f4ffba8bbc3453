@@ -8,16 +8,12 @@ public class Player
 	private boolean won;//bool indicating whether player one or not
 	public static Random die;//a random number generator that represents the dice
 	private int score;//the player's score
-	private int roll;
-	private int winningNumber;
-	private int losingNumber;
 	
-	Player(String name, int winningNumber, int losingNumber)
+	Player(String name)
 	{
 		this.name = name;
 		this.playing = true;
 		this.die = new Random();
-		this.winningNumber = winningNumber;
 	}
 	
 	public void rollDie()
@@ -26,23 +22,19 @@ public class Player
 		
 		score += roll;
 		
-		
-		
+		if(roll == 1)
+			playing = false;
+		else if(score == 111)
+			won = true;
 		System.out.println("Roll" + roll + "\tScore" + score);
 		
 	}
 	public boolean isPlaying()
 	{
-		if(roll == losingNumber)
-			playing = false;
-		
 		return playing;
 	}
 	public boolean hasWon()
 	{
-		if(score >= winningNumber)
-			won = true;
-		
 		return won;
 	}
 	public void setWon(boolean won)

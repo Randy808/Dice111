@@ -1,0 +1,97 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Game {
+	
+	public static void main (String[] args)
+	{
+		String name = null;
+		ArrayList<Player> players = new ArrayList<Player>();
+		Scanner in = new Scanner(System.in);
+		int playerNum = 1;
+		
+		
+		System.out.println("Enter the name of Player " + playerNum);
+		name = in.next();
+		playerNum++;
+		
+		while(!name.equals("done"))
+		{
+			players.add(new Player(name));
+			System.out.println("Enter the name of Player " + playerNum + " ('done' when finished) : ");
+			name = in.next();
+			playerNum++;
+			
+		}
+		
+		
+		boolean onePlaying = true;
+		int winner;
+		boolean hasWinner = false;
+		int bestScore = 0;
+		boolean hasBestScore = false;
+		
+		while(onePlaying)
+		{
+			onePlaying = false;
+			for(int i = 0 ; i < players.size() ; i++)
+			{
+				if(players.get(i).isPlaying())
+				{
+					onePlaying = true;
+					players.get(i).rollDie();
+					
+					if(players.get(i).getScore() >= players.get(bestScore).getScore())
+					{
+						bestScore = i;
+						hasBestScore = true;
+						
+					}
+					
+					if(players.get(i).hasWon())
+					{
+						winner = i;
+						onePlaying = false;
+						hasWinner = true;
+						break;
+					}
+					
+				}
+			}
+		}
+		
+		if(hasBestScore)
+			players.get(bestScore).setWon(true);
+		
+		for(int i = 0 ; i < players.size() ; i++)
+		{
+			if(!players.get(i).hasWon())
+			{
+				System.out.println("LOSER " + i + "," + players.get(i).getName() + " :" + players.get(i).getScore());
+			}
+			else
+			{
+				System.out.println("WINNER " + i + "," + players.get(i).getName() + " :" + players.get(i).getScore());
+			}
+			
+		}
+		
+		/*
+		 * bool one onePlaying
+		 * 
+		 * while playing
+			  for players
+			  		if(playing)
+			  			roll dice
+			  			onePlaying = true;
+			  			if(player wins)
+			  				onePlaying = false;
+			  				winner = i;
+		 
+		 * 
+		 */
+		
+	}
+
+}

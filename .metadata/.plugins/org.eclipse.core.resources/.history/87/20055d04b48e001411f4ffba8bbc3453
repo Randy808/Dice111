@@ -10,9 +10,8 @@ public class Player
 	private int score;//the player's score
 	private int roll;
 	private int winningNumber;
-	private int losingNumber;
 	
-	Player(String name, int winningNumber, int losingNumber)
+	Player(String name, int winningNumber)
 	{
 		this.name = name;
 		this.playing = true;
@@ -33,7 +32,7 @@ public class Player
 	}
 	public boolean isPlaying()
 	{
-		if(roll == losingNumber)
+		if(roll == 1)
 			playing = false;
 		
 		return playing;
