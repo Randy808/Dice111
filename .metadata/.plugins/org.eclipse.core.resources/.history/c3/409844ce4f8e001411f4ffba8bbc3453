@@ -1,0 +1,45 @@
+import java.util.Random;
+
+
+public class Player 
+{
+	private String name;//name of the player to be inserted into the constructor
+	private boolean playing;//bool on whether the player is till playing or not
+	private boolean won;//bool indicating whether player one or not
+	public static Random die;//a random number generator that represents the dice
+	private int score;//the player's score
+	
+	Player(String name)
+	{
+		this.name = name;
+		this.playing = true;
+		this.die = new Random();
+	}
+	
+	public void rollDie()
+	{	
+		int roll = die.nextInt(6 + 1);
+		
+		score += roll;
+		
+		if(roll == 1)
+			playing = false;
+		else if(score == 111)
+			won = true;
+		System.out.println("Roll" + roll + "\tScore" + score);
+		
+	}
+	public boolean isPlaying()
+	{
+		return playing;
+	}
+	public boolean hasWon()
+	{
+		return won;
+	}
+	public int getScore()
+	{
+		return score;
+	}
+
+}

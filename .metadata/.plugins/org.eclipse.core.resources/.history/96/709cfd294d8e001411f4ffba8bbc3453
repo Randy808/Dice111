@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Game {
+	
+	public static void main (String[] args)
+	{
+		String name = null;
+		ArrayList<Player> player = new ArrayList<Player>();
+		Scanner in = new Scanner(System.in);
+		int playerNum = 1;
+		
+		do
+		{
+			System.out.println("Enter the name of Player " + playerNum);
+			name = in.next();
+			player.add(new Player(name));
+			
+		}
+		while(!name.equals("done"));
+		
+		Player marcus = new Player("Marcus");
+		
+		while(marcus.isPlaying())
+		{
+			marcus.rollDie();
+		}
+		
+		/*
+		 * bool one onePlaying
+		 * 
+		 * while playing
+			  for players
+			  		if(playing)
+			  			roll dice
+			  			onePlaying = true;
+			  			if(player wins)
+			  				onePlaying = false;
+			  				winner = i;
+		 
+		 * 
+		 */
+		
+	}
+
+}

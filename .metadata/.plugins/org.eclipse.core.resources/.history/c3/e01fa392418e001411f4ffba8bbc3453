@@ -1,0 +1,20 @@
+import java.util.Random;
+
+
+public class Player 
+{
+	public static Random die;
+	private String name;
+	private int score;
+	
+	Player(String name)
+	{
+		this.name = name;
+	}
+	
+	public void rollDie()
+	{				
+		score += die.nextInt(6);
+	}
+
+}

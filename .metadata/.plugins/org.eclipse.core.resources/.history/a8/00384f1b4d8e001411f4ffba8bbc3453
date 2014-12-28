@@ -1,0 +1,16 @@
+
+public class Game {
+	
+	public static void main (String[] args)
+	{
+		
+		Player marcus = new Player("Marcus");
+		
+		while(marcus.isPlaying())
+		{
+			marcus.rollDie();
+		}
+		
+	}
+
+}

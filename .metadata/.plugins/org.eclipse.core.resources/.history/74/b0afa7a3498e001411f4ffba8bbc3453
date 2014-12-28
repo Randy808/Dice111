@@ -1,0 +1,26 @@
+import java.util.Random;
+
+
+public class Player 
+{
+	private boolean playing;
+	public static Random die;
+	private String name;
+	private int score;
+	
+	Player(String name)
+	{
+		this.name = name;
+		this.playing = true;
+	}
+	
+	public void rollDie()
+	{	
+		int roll = die.nextInt(6 + 1);
+		
+		if(roll == 1)
+			playing = false;
+		score += roll;
+	}
+
+}
